@@ -30,7 +30,7 @@
   }
 
   :global(button) {
-    margin: var(--margin);
+    margin: 1rem;
     padding: 1rem;
     background: var(--light-color-50);
     border: none;
