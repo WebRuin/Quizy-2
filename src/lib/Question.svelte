@@ -1,6 +1,6 @@
 <script>
   import { BarLoader } from "svelte-loading-spinners";
-  import { score } from "./store.js";
+  import { score, questionNumber } from "./store.js";
 
   export let question;
   export let nextQuestion;
@@ -74,14 +74,14 @@
     color: green;
   }
 
+  h5 {
+    margin: var(--margin)
+  }
+
   .answers {
+    margin: var(--margin);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: start;
   }
-
-  button {
-    flex: 1 0 171px;
-  }
-
 </style>

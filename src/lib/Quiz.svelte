@@ -1,14 +1,14 @@
 <script>
   import { fade, blur, fly, slide, scale } from "svelte/transition";
   import { BarLoader } from "svelte-loading-spinners";
-  import { score } from "./store.js";
+  import { score, questionNumber } from "./store.js";
 
   import Question from "./Question.svelte";
   import Modal from "./Modal.svelte";
 
   let activeQuestion = 1;
   let quiz = getQuiz();
-  let gameMessage;
+  let gameMessage = "Please choice an answer";
   let wrongAnswers = 0;
   let isModalOpen;
 
@@ -22,6 +22,7 @@
 
   function nextQuestion() {
     activeQuestion = activeQuestion + 1;
+    $questionNumber.update((val) => activeQuestion);
   }
 
   $: if ($score > 6) {
@@ -72,9 +73,8 @@
     <p>My Score: {$score}</p>
     <p>Wrong Answers: {wrongAnswers}</p>
   </h3>
-  <h4>Question # {activeQuestion}</h4>
   {#if gameMessage}
-    <h5>{gameMessage}</h5>
+    <h4>{gameMessage}</h4>
   {/if}
 
   {#await quiz}
@@ -101,6 +101,18 @@
 <style>
   .fade-wrapper {
     position: absolute;
-    width: 92%;
+    width: 600px;
+    margin: var(--margin);
+    
+  }
+
+  h4 {
+    margin: var(--margin);
+  }
+
+  @media screen and (max-width: 600px) {
+    .fade-wrapper {
+      width: 91.25vw;
+    }
   }
 </style>
