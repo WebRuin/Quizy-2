@@ -7,14 +7,6 @@
 
 <div transition:fade class="modal-bg">
   <div transition:fly={{ y: -100 }} class="modal">
-    <button
-      on:click={() => {
-        dispatch("closeModal");
-      }}
-    >
-      Close
-    </button>
-
     <slot />
   </div>
 </div>
@@ -37,11 +29,17 @@
     width: 50vh;
     height: 50vh;
     display: grid;
-    color: #f00;
-    place-content: center;
     border-radius: 3vh;
-    background-color: #fff;
-    border: 4px solid #f00;
     text-align: center;
+    place-content: center;
+    color: var(--light-color);
+    background: var(--dark-color);
+    border: 4px solid var(--hightlight-color);
+  }
+
+  @media screen and (max-width: 600px) {
+    .modal {
+      width: unset;
+    }
   }
 </style>

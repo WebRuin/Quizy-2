@@ -12,6 +12,7 @@
   let gameMessage = "Please choice an answer";
   let wrongAnswers = 0;
   let isModalOpen;
+  let isWinner;
 
   async function getQuiz() {
     const res = await fetch(
@@ -27,6 +28,7 @@
   }
 
   $: if ($score > 6) {
+    isWinner = true;
     isModalOpen = true;
   } else if ($score > 5) {
     gameMessage = "You are a true master of the universe";
@@ -46,7 +48,7 @@
   function addToNumberOfWrongAnswers() {
     wrongAnswers = wrongAnswers + 1;
     if (wrongAnswers > 3) {
-      gameMessage = "You are lost!!!";
+      isModalOpen = true;
       isWaiting = true;
       setTimeout(() => {
         isWaiting = false;
@@ -69,8 +71,6 @@
 </script>
 
 <section>
-  <button on:click={resetQuiz}>New Quiz</button>
-
   <h3>
     <p>My Score: {$score}</p>
     <p>Wrong Answers: {wrongAnswers}</p>
@@ -94,8 +94,12 @@
 
 {#if isModalOpen}
   <Modal on:closeModal={resetQuiz} class="modal-bg">
-    <h2>🎉 Congrats 🎉</h2>
-    <p>You won the game!</p>
+    {#if isWinner}
+      <h2>🎉 Congrats 🎉</h2>
+      <p>You won the game!</p>
+    {:else}
+      <h2>💩 You lost 💩</h2>
+    {/if}
     <button on:click={resetQuiz}>Go Again!</button>
   </Modal>
 {/if}
@@ -105,7 +109,15 @@
     position: absolute;
     width: 600px;
     margin: var(--margin);
-    
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    text-align: center;
   }
 
   h4 {
