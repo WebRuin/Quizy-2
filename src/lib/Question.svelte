@@ -74,8 +74,9 @@
     color: green;
   }
 
-  h5 {
-    margin: var(--margin)
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.5;
   }
 
   .answers {

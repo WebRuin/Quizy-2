@@ -14,6 +14,7 @@ specifiers:
   prettier-plugin-svelte: ^2.5.0
   svelte: ^3.44.0
   svelte-check: ^2.2.6
+  svelte-forms-lib: ^2.0.1
   svelte-loading-spinners: ^0.1.7
   svelte-preprocess: ^4.10.1
   tslib: ^2.3.1
@@ -33,6 +34,7 @@ devDependencies:
   prettier-plugin-svelte: 2.7.0_kkjbqzpydplecjtkxrgomroeru
   svelte: 3.48.0
   svelte-check: 2.7.0_svelte@3.48.0
+  svelte-forms-lib: 2.0.1
   svelte-loading-spinners: 0.1.7
   svelte-preprocess: 4.10.6_wwvk7nlptlrqo2czohjtk6eiqm
   tslib: 2.4.0
@@ -254,6 +256,8 @@ packages:
     resolution: {integrity: sha512-n2Q6i+fnJqzOaq2VkdXxy2TCPCWQZHiCo0XqmrCvDWcZQKRyZzYi4Z0yxlBuN0w+r2ZHmre+Q087DSrw3pbJDQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+    dependencies:
+      '@babel/types': 7.17.10
     dev: true
 
   /@babel/plugin-proposal-class-properties/7.16.7_@babel+core@7.16.12:
@@ -1198,6 +1202,11 @@ packages:
     dependencies:
       has-property-descriptors: 1.0.0
       object-keys: 1.1.1
+    dev: true
+
+  /dequal/2.0.2:
+    resolution: {integrity: sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==}
+    engines: {node: '>=6'}
     dev: true
 
   /detect-indent/6.1.0:
@@ -2575,6 +2584,12 @@ packages:
       - sass
       - stylus
       - sugarss
+    dev: true
+
+  /svelte-forms-lib/2.0.1:
+    resolution: {integrity: sha512-kwbJ3ynsepsrrJyAMrvSc0Lj/myc9vfI2DL8OKxgArZimrNYsRh1gENYhvrcKEI3BiZrv8q3VFfmGo/GMyk7Zg==}
+    dependencies:
+      dequal: 2.0.2
     dev: true
 
   /svelte-hmr/0.14.11_svelte@3.48.0:

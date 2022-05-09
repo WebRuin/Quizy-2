@@ -1,7 +1,8 @@
 <script>
   import { fade, blur, fly, slide, scale } from "svelte/transition";
   import { BarLoader } from "svelte-loading-spinners";
-  import { score, questionNumber } from "./store.js";
+  import { category, difficulty, score, questionNumber } from "./store.js";
+  import { goto } from '$app/navigation';
 
   import Question from "./Question.svelte";
   import Modal from "./Modal.svelte";
@@ -14,7 +15,7 @@
 
   async function getQuiz() {
     const res = await fetch(
-      "https://opentdb.com/api.php?amount=10&category=12&difficulty=medium"
+      `https://opentdb.com/api.php?amount=10&category=${parseInt($category)}&difficulty=${$difficulty}&type=multiple`
     );
     const quiz = await res.json();
     return quiz;
@@ -63,6 +64,7 @@
     score.set(0);
     wrongAnswers = 0;
     quiz = getQuiz();
+    goto("/")
   }
 </script>
 
@@ -107,7 +109,9 @@
   }
 
   h4 {
-    margin: var(--margin);
+    font-size: 1.5rem;
+    color: var(--hightlight-light-color);
+    margin: 2rem 0;
   }
 
   @media screen and (max-width: 600px) {
