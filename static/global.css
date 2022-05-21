@@ -66,7 +66,7 @@ body > div {
 h1 {
 	font-size: 3rem;
 	color: var(--hightlight-color);
-	background: linear-gradient(90deg, var(--blue-teal) 0%, var(--hot-pink) 100%);
+	background: linear-gradient(90deg, var(--hot-pink) 0%, var(--blue-teal) 100%);
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	-webkit-background-clip: text;
@@ -102,14 +102,13 @@ button {
 	margin: 0.5rem;
 	padding: 0.5rem;
 	font-size: 1.5rem;
-	/* background: var(--light-color-50); */
 	background: linear-gradient(90deg, var(--hot-pink) 0%, var(--blue-teal) 100%);
 	border: none;
 	border-radius: 35px;
 	cursor: pointer;
 	/* border: 2px solid var(--light-color); */
 	font-weight: bold;
-	color: var(--light-color);
+	color: var(--dark-color);
 	box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
 	box-shadow: 0px 0px 30px rgba(0,0,0,0.5);

@@ -87,6 +87,10 @@
 	}
 
 	.question {
+		background: linear-gradient(90deg, var(--blue-teal) 0%, var(--hot-pink) 100%);
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
 		font-size: 1.5rem;
 		text-align: left;
 	}
