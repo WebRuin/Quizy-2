@@ -99,8 +99,8 @@ p {
 }
 
 button {
-	margin: 1rem;
-	padding: 1rem;
+	margin: 0.5rem;
+	padding: 0.5rem;
 	font-size: 1.5rem;
 	/* background: var(--light-color-50); */
 	background: linear-gradient(90deg, var(--hot-pink) 0%, var(--blue-teal) 100%);
