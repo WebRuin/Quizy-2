@@ -1,5 +1,5 @@
 <script>
-	import { fade, blur, fly, slide, scale } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	import { BarLoader } from 'svelte-loading-spinners';
 	import { category, difficulty, questionType, score, questionNumber } from './store.js';
 	import { goto } from '$app/navigation';
@@ -10,7 +10,7 @@
 	let activeQuestion = 1;
 	let quiz = getQuiz();
 	let gameMessage = 'Please choice an answer';
-	let wrongAnswers = 0;
+	let wrongAnswers = 4;
 	let isModalOpen;
 	let isWinner;
 
@@ -48,15 +48,15 @@
 	}
 
 	function addToNumberOfWrongAnswers() {
-		wrongAnswers = wrongAnswers + 1;
-		if (wrongAnswers > 3) {
+		wrongAnswers = wrongAnswers - 1;
+		if (wrongAnswers < 1) {
 			isModalOpen = true;
 			isWaiting = true;
 			setTimeout(() => {
 				isWaiting = false;
 				resetQuiz();
 			}, 1500);
-		} else if (wrongAnswers > 2) {
+		} else if (wrongAnswers < 2) {
 			gameMessage = 'One more wrong answer and you lose!!!';
 		} else {
 		}
@@ -74,8 +74,7 @@
 
 <section>
 	<h3>
-		<p>My Score: {$score}</p>
-		<p>Wrong Answers: {wrongAnswers}</p>
+		<p>You can miss {wrongAnswers} questions</p>
 	</h3>
 	{#if gameMessage}
 		<h4>{gameMessage}</h4>
@@ -97,10 +96,10 @@
 {#if isModalOpen}
 	<Modal on:closeModal={resetQuiz} class="modal-bg">
 		{#if isWinner}
-			<h2>🎉 Congrats 🎉</h2>
+			<h1>Congrats</h1>
 			<p>You won the game!</p>
 		{:else}
-			<h2>💩 You lost 💩</h2>
+			<h1>You lost</h1>
 		{/if}
 		<button on:click={resetQuiz}>Go Again!</button>
 	</Modal>
@@ -114,6 +113,7 @@
 	}
 
 	h2 {
+		background: linear-gradient(90deg, var(--blue-teal) 0%, var(--hot-pink) 100%);
 		font-size: 2rem;
 		margin-bottom: 0.25rem;
 	}
@@ -124,7 +124,7 @@
 
 	h4 {
 		font-size: 1.5rem;
-		color: var(--hightlight-light-color);
+		color: var(--hot-pink);
 		margin: 2rem 0;
 	}
 

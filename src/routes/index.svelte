@@ -106,15 +106,6 @@
 </main>
 
 <style>
-	h1 {
-		font-size: 3rem;
-		color: var(--hightlight-color);
-	}
-	/* h2 {
-		font-size: 3rem;
-		color: var(--hightlight-light-color);
-	} */
-
 	header {
 		display: flex;
 		margin: var(--margin);
@@ -134,10 +125,19 @@
 	}
 
 	select {
+		width: 100%;
 		margin: 1rem 0;
-		padding: 0.25rem;
+		padding: 0.5rem;
 		color: var(--light-color);
-		background: var(--dark-color);
-		border: 2px solid var(--hightlight-color);
+		background: rgba(0, 0, 0, 0.2);
+		border: none;
+	}
+	select::after {
+		content: '';
+		justify-self: end;
+		width: 0.8em;
+		height: 0.5em;
+		background-color: var(--select-arrow);
+		clip-path: polygon(100% 0%, 0 0%, 50% 100%);
 	}
 </style>
