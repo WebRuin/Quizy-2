@@ -87,6 +87,7 @@
 	}
 
 	.question {
+		font-size: 1.5rem;
 		text-align: left;
 	}
 
