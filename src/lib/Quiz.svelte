@@ -148,6 +148,7 @@
 	h4 {
 		font-size: 1.5rem;
 		margin: 2rem 0;
+		margin-bottom: 0.5rem;
 	}
 
 	@media screen and (max-width: 600px) {

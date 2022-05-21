@@ -53,7 +53,7 @@
 			<BarLoader size="60" color="#00d8ff" unit="px" duration="1s" />
 		</div>
 	{:else}
-		<h3>{@html question.question}</h3>
+		<p class="question">{@html question.question}</p>
 	{/if}
 	{#if isAnswered}
 		<h5 class:isCorrect>
@@ -74,9 +74,9 @@
 		color: var(--hot-pink);
 	}
 
-	h3 {
-		font-size: 1.5rem;
-		line-height: 1.5;
+	p {
+		font-size: 1.2rem;
+		line-height: 1.2;
 	}
 
 	.answers {
@@ -84,6 +84,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: start;
+	}
+
+	.question {
+		text-align: left;
 	}
 
 	.loader {
