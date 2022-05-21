@@ -26,7 +26,7 @@
 
 	function nextQuestion() {
 		activeQuestion = activeQuestion + 1;
-		$questionNumber.update((val) => activeQuestion);
+		questionNumber.update((val) => activeQuestion);
 	}
 
 	$: if ($score > 6) {
@@ -73,15 +73,20 @@
 </script>
 
 <section>
-	<h3>
-		<p>You can miss {wrongAnswers} questions</p>
-	</h3>
+	<header>
+		<span class="number">
+			Question #: {$questionNumber}/10
+		</span>
+		<span class="wrong">
+			You can miss {wrongAnswers} questions
+		</span>
+	</header>
 	{#if gameMessage}
 		<h4>{gameMessage}</h4>
 	{/if}
 
 	{#await quiz}
-		<BarLoader size="60" color="#FF3E00" unit="px" duration="1s" />
+		<BarLoader size="60" color="#00d8ff" unit="px" duration="1s" />
 	{:then data}
 		{#each data.results as question, index}
 			{#if index === activeQuestion - 1}
@@ -106,6 +111,24 @@
 {/if}
 
 <style>
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+		font-size: 1rem;
+		padding: 1rem;
+		margin: -1.5rem 0 1rem 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+
+	.number {
+		color: var(--blue-teal);
+	}
+
+	.wrong {
+		color: var(--hot-pink);
+	}
 	.fade-wrapper {
 		position: absolute;
 		width: 600px;
@@ -124,7 +147,6 @@
 
 	h4 {
 		font-size: 1.5rem;
-		color: var(--hot-pink);
 		margin: 2rem 0;
 	}
 
